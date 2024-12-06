@@ -21,6 +21,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+//realiza o filtro do token para liberar acesso as requisiçoes
+
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 	
