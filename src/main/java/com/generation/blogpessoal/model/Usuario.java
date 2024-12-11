@@ -24,24 +24,37 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@NotNull
 	@Email
 	private String usuario;
-	
+
 	@NotBlank
 	@Size(min = 8)
 	private String senha;
-	
+
 	@Size(max = 5000)
 	private String foto;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+	
+	public Usuario() {
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -90,6 +103,5 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
-	
+
 }
